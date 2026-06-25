@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Linen Leaf — For Intentional Everyday Life</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF8F5;
+    --charcoal: #1C1C1A;
+    --sage: #8A9E85;
+    --nude: #D4BFA0;
+    --terracotta: #C97F5A;
+    --warm-mid: #6B6257;
+    --light-border: #E8E3DC;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 1px;
+    line-height: 1.6;
+  }
+
+  /* ANNOUNCEMENT BAR */
+  .announcement-bar {
+    background: var(--charcoal);
+    color: var(--cream);
+    font-size: 11.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 9px 20px;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+  }
+  .announcement-bar a { color: var(--nude); text-decoration: underline; }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 64px;
+    border-bottom: 1px solid var(--light-border);
+    background: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-left {
+    display: flex;
+    gap: 28px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .nav-left a {
+    color: var(--charcoal);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-left a:hover { color: var(--terracotta); }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    text-decoration: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .nav-right a {
+    color: var(--charcoal);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-right a:hover { color: var(--terracotta); }
+
+  .cart-icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+  }
+  .cart-icon svg { width: 18px; height: 18px; stroke: var(--charcoal); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 64px - 38px);
+    min-height: 540px;
+    overflow: hidden;
+    background: #2e2c29;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url("Sherrill_photos/sherrill_final.jpg") no-repeat center center;
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* editorial texture overlay */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(73, 24, 1, 0.08) 0%, transparent 60%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 80px;
+    max-width: 700px;
+   background: rgba(250, 248, 245, 0.7); /* white-ish backing */
+  backdrop-filter: blur(4px);            /* frosted glass effect */
+  padding: 30px 48px;
+  border-radius: 2px;
+  max-width: 560px;
+  }
+
+  .hero-eyebrow {
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    font-weight: 500;
+    margin-bottom: 18px;
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 90px);
+    line-height: 0.95;
+    font-weight: 300;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero-sub {
+    font-size: 13.5px;
+    color: var(--warm-mid);
+    max-width: 360px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--charcoal);
+    color: var(--cream);
+    text-decoration: none;
+    padding: 13px 28px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.25s, color 0.25s;
+    width: fit-content;
+  }
+  .hero-cta:hover { background: var(--terracotta); }
+  .hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: transparent;
+    color: var(--charcoal);
+    text-decoration: none;
+    padding: 13px 28px;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid var(--charcoal);
+    transition: background 0.25s, color 0.25s;
+    width: fit-content;
+  }
+  .hero-cta-secondary:hover { background: var(--charcoal); color: var(--cream); }
+
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+
+  /* floating detail */
+  .hero-detail {
+    position: absolute;
+    right: 80px;
+    bottom: 60px;
+    text-align: right;
+    z-index: 2;
+  }
+  .hero-detail-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    margin-bottom: 4px;
+  }
+  .hero-detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+
+  /* TICKER */
+  .ticker {
+    background: var(--sage);
+    color: var(--cream);
+    overflow: hidden;
+    padding: 11px 0;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 28s linear infinite;
+  }
+  .ticker-item {
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0 36px;
+    font-weight: 400;
+  }
+  .ticker-dot {
+    color: rgba(182, 171, 171, 0.5);
+    font-size: 8px;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* SECTION LABELS */
+  .section {
+    padding: 72px 60px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--charcoal);
+    letter-spacing: -0.01em;
+  }
+  .section-link {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--nude);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .section-link:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+  /* CATEGORIES GRID */
+  .categories {
+    background: var(--cream);
+    padding: 60px 60px;
+    border-top: 1px solid var(--light-border);
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .cat-tile {
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    background: #E2DDD6;
+  }
+  .cat-bg {
+    position: absolute;
+    inset: 0;
+    transition: transform 0.6s ease;
+  }
+  .cat-tile:hover .cat-bg { transform: scale(1.04); }
+  .cat-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 16px 18px;
+    background: linear-gradient(0deg, rgba(28,28,26,0.55) 0%, transparent 100%);
+  }
+  .cat-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #FAF8F5;
+    letter-spacing: 0.02em;
+    display: block;
+  }
+  .cat-count {
+    font-size: 10px;
+    color: rgba(250,248,245,0.65);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* cat placeholder colours */
+  .cat-tile:nth-child(1) .cat-bg { background: url('Sam_pics/sam_pic1.jpg') no-repeat center center; background-size: cover; }
+  .cat-tile:nth-child(2) .cat-bg { background: url('Ashley_pics/ashley_pic1.jpg') no-repeat center center; background-size: cover; }
+  .cat-tile:nth-child(3) .cat-bg { background: url('erica_pics/erica_pic1.jpg') no-repeat center center; background-size: cover; }
+  .cat-tile:nth-child(4) .cat-bg { background: url('Gloria_pics/gloria_pic1.jpg') no-repeat center center; background-size: cover; }
+  .cat-tile:nth-child(5) .cat-bg { background: url('Jsean_pics/jsean_pic1.jpg') no-repeat center center; background-size: cover; }
+
+  /* abstract shape overlays for categories */
+
+  /* PRODUCT GRID */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px 16px;
+  }
+
+  .product-card {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-img {
+    aspect-ratio: 3/4;
+    background: #EDEAE4;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  .product-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* individual product color palettes */
+  .product-card:nth-child(1) .product-img { background: url('Aloy_pics/Aloy_photo1.jpg') no-repeat center center; background-size: cover; }
+  .product-card:nth-child(2) .product-img { background: url('Janelle_pics/Janelle_photo1.jpg') no-repeat center center; background-size: cover; }
+  .product-card:nth-child(3) .product-img { background: url('Angie_pics/Angie_photo1.jpg') no-repeat center center; background-size: cover; }
+  .product-card:nth-child(4) .product-img { background: url('Estella_pics/Estella_photo1.jpg') no-repeat center center; background-size: cover; }
+  .product-card:nth-child(5) .product-img { background: url('Leow_pics/Leow_photo1.jpg') no-repeat center center; background-size: cover; }
+  .product-card:nth-child(6) .product-img { background: url('Sherrill_photos/Leo_photo1.jpg') no-repeat center center; background-size: cover; }
+  .product-card:nth-child(7) .product-img { background: url('Sherrill_photos/Sherrill_photo3.jpg') no-repeat center center; background-size: cover; }
+  .product-card:nth-child(8) .product-img { background: url('Sherrill_photos/Sherrill_photo4.jpg') no-repeat center center; background-size: cover; }
+
+  .product-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(28,28,26,0);
+    transition: background 0.3s;
+  }
+  .product-card:hover .product-img::after { background: rgba(28,28,26,0.06); }
+
+  .product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--terracotta);
+    color: #FAF8F5;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    font-weight: 500;
+    z-index: 1;
+  }
+
+  .product-quick-add {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: var(--charcoal);
+    color: var(--cream);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 11px;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.28s ease;
+    z-index: 2;
+  }
+  .product-card:hover .product-quick-add { transform: translateY(0); }
+
+  /* product shape illustrations */
+  .shape-bag::before { content: ''; position: absolute; top: 25%; left: 50%; transform: translateX(-50%); width: 45%; height: 55%; border: 2px solid rgba(255,255,255,0.3); border-radius: 4px 4px 10px 10px; }
+  .shape-bag::after { content: ''; position: absolute; top: 18%; left: 50%; transform: translateX(-50%); width: 22%; height: 10%; border: 2px solid rgba(255,255,255,0.3); border-top: none; border-radius: 0 0 8px 8px; }
+
+  .product-name {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .product-price {
+    font-size: 12.5px;
+    color: var(--warm-mid);
+    font-weight: 300;
+  }
+  .product-sale-price {
+    color: var(--terracotta);
+    margin-right: 6px;
+    font-weight: 400;
+  }
+  .product-orig-price {
+    text-decoration: line-through;
+    color: var(--nude);
+  }
+
+  /* BANNER STRIP */
+  .banner-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 380px;
+    margin-top: 0;
+  }
+  .banner-panel {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+    padding: 36px 40px;
+  }
+  .banner-panel:nth-child(1) { background: linear-gradient(135deg, #2C3E34 0%, #1A2820 100%); }
+  .banner-panel:nth-child(2) { background: linear-gradient(135deg, #C97F5A 0%, #B06540 100%); }
+
+  .banner-panel::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 70%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .banner-content { position: relative; z-index: 1; }
+  .banner-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .banner-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: #FAF8F5;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .banner-cta {
+    display: inline-flex;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .banner-cta:hover { color: #fff; border-color: #fff; }
+
+  /* VALUES BAR */
+  .values-bar {
+    border-top: 1px solid var(--light-border);
+    border-bottom: 1px solid var(--light-border);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .value-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 24px 32px;
+    border-right: 1px solid var(--light-border);
+  }
+  .value-item:last-child { border-right: none; }
+  .value-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    stroke: var(--sage);
+  }
+  .value-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .value-desc {
+    font-size: 11.5px;
+    color: var(--warm-mid);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  /* NEWSLETTER */
+  .newsletter {
+    background: var(--charcoal);
+    padding: 72px 60px;
+    text-align: center;
+  }
+  .newsletter-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--nude);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+  .newsletter-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .newsletter-title em { font-style: italic; color: var(--nude); }
+  .newsletter-sub {
+    font-size: 13px;
+    color: rgba(250,248,245,0.55);
+    margin-bottom: 32px;
+    font-weight: 300;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .newsletter-form input {
+    flex: 1;
+    padding: 13px 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-right: none;
+    color: var(--cream);
+    font-size: 13px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    letter-spacing: 0.01em;
+  }
+  .newsletter-form input::placeholder { color: rgba(250,248,245,0.35); }
+  .newsletter-form button {
+    padding: 13px 24px;
+    background: var(--terracotta);
+    color: var(--cream);
+    border: 1px solid var(--terracotta);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+  .newsletter-form button:hover { background: #b56f4a; }
+
+  /* FOOTER */
+  footer {
+    background: var(--cream);
+    border-top: 1px solid var(--light-border);
+    padding: 56px 60px 32px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 14px;
+  }
+  .footer-tagline {
+    font-size: 12.5px;
+    color: var(--warm-mid);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 240px;
+    margin-bottom: 24px;
+  }
+  .footer-socials { display: flex; gap: 14px; }
+  .footer-socials a {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--light-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--warm-mid);
+    font-size: 11px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .footer-socials a:hover { background: var(--charcoal); color: var(--cream); border-color: var(--charcoal); }
+
+  .footer-col h4 {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--charcoal);
+    margin-bottom: 18px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a {
+    font-size: 12.5px;
+    color: var(--warm-mid);
+    text-decoration: none;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--charcoal); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--light-border);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: var(--nude);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+  .footer-legal {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-legal a {
+    font-size: 11px;
+    color: var(--nude);
+    text-decoration: none;
+    font-weight: 300;
+  }
+  .footer-legal a:hover { color: var(--warm-mid); }
+
+  /* responsive tweak */
+  @media (max-width: 1024px) {
+    .cat-grid { grid-template-columns: repeat(3, 1fr); }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    .nav-left { display: none; }
+    .section, .categories { padding: 48px 20px; }
+    .hero-content { padding: 40px 28px; }
+    .hero-detail { display: none; }
+    .banner-strip { grid-template-columns: 1fr; height: auto; }
+    .banner-panel { padding: 36px 28px; min-height: 220px; }
+    .values-bar { grid-template-columns: 1fr 1fr; }
+    .value-item:nth-child(2) { border-right: none; }
+    .newsletter { padding: 56px 28px; }
+    .newsletter-form { flex-direction: column; }
+    .newsletter-form input { border-right: 1px solid rgba(255,255,255,0.18); border-bottom: none; }
+    footer { padding: 48px 20px 24px; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  New arrival: <strong>The Everyday Tote — Sandstone</strong> &nbsp;·&nbsp; Free shipping on orders above $60 &nbsp;·&nbsp; <a href="#">Shop Now →</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#">New</a>
+    <a href="Sam_affirm.html">Sammie affirmation</a>
+    <a href="#">Wear</a>
+    <a href="#">Lifestyle</a>
+    <a href="#">Gifts</a>
+    <a href="#">Sale</a>
+  </div>
+  <a href="#" class="nav-logo">The Linen Leaf</a>
+  <div class="nav-right">
+    <a href="#">Search</a>
+    <a href="#">Account</a>
+    <a href="#" class="cart-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 0 1-8 0"/>
+      </svg>
+      0
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Summer Collection 2026</p>
+    <h1 class="hero-headline">Sherrill's<br><em>birthday card,</em><br>5 months late.</h1>
+    <p class="hero-sub">Shy, reserved, but internally full of life — derived from the convictions of the Word and the deliciousness of dessert, though she can't eat anything more than two bites .</p>
+    <div class="hero-ctas">
+      <a href="#" class="hero-cta">Shop Her Collection (these links don't actually work)</a>
+      <a href="#" class="hero-cta-secondary">Her Story</a>
+    </div>
+  </div>
+  <div class="hero-detail">
+    <p class="hero-detail-label">New styles this season</p>
+    <p class="hero-detail-value">48</p>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Free Local Shipping</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Singapore Delivery Available only</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Functional Design for Intentional Living</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">New: Everyday Tote — Sandstone</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Join Our Loyalty Programme</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Sustainable Materials Where Possible</span><span class="ticker-dot">◆</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">Free Local Shipping on Orders $60+</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Worldwide Delivery Available</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Functional Design for Intentional Living</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">New: Everyday Tote — Sandstone</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Join Our Loyalty Programme</span><span class="ticker-dot">◆</span>
+    <span class="ticker-item">Sustainable Materials Where Possible</span><span class="ticker-dot">◆</span>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <div class="section-header">
+    <h2 class="section-title">Shop by Category</h2>
+    <a href="#" class="section-link">View All →</a>
+  </div>
+  <div class="cat-grid">
+    <a href="Sam_affirm.html" class="cat-tile">
+      <div class="cat-bg"></div>
+      <div class="cat-overlay">
+        <span class="cat-name">Sammie</span>
+        <span class="cat-count">42 styles</span>
+      </div>
+    </a>
+    <a href="Ashley_affirm.html" class="cat-tile">
+      <div class="cat-bg"></div>
+      <div class="cat-overlay">
+        <span class="cat-name">Ashley</span>
+        <span class="cat-count">31 styles</span>
+      </div>
+    </a>
+    <a href="Erica_affirm.html" class="cat-tile">
+      <div class="cat-bg"></div>
+      <div class="cat-overlay">
+        <span class="cat-name">Erica</span>
+        <span class="cat-count">26 items</span>
+      </div>
+    </a>
+    <a href="Gloria_affirm.html" class="cat-tile">
+      <div class="cat-bg"></div>
+      <div class="cat-overlay">
+        <span class="cat-name">Gloria</span>
+        <span class="cat-count">19 items</span>
+      </div>
+    </a>
+    <a href="Jsean_affirm.html" class="cat-tile">
+      <div class="cat-bg"></div>
+      <div class="cat-overlay">
+        <span class="cat-name">Jsean</span>
+        <span class="cat-count">Curated sets</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- BESTSELLERS -->
+<section class="section" style="padding-top:20px; border-top: 1px solid var(--light-border);">
+  <div class="section-header">
+    <h2 class="section-title">Bestsellers</h2>
+    <a href="#" class="section-link">Shop All →</a>
+  </div>
+  <div class="product-grid">
+
+    <a href="Aloy_affirm.html" class="product-card">
+      <div class="product-img">
+        <span class="product-badge">New</span>
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Aloy's affirmation</p>
+      <p class="product-price">$95.00 SGD</p>
+    </a>
+
+    <a href="Janelle_affirm.html" class="product-card">
+      <div class="product-img">
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Janelle's affirmation</p>
+      <p class="product-price">$78.00 SGD</p>
+    </a>
+
+    <a href="Angie_affirm.html" class="product-card">
+      <div class="product-img">
+        <span class="product-badge">Sale</span>
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Angie's affirmation</p>
+      <p class="product-price">
+        <span class="product-sale-price">$55.00</span>
+        <span class="product-orig-price">$75.00</span>
+        SGD
+      </p>
+    </a>
+
+    <a href="Estella_affirm.html" class="product-card">
+      <div class="product-img">
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Estella's affirmation</p>
+      <p class="product-price">From $22.00 SGD</p>
+    </a>
+
+    <a href="Leow_affirm.html" class="product-card">
+      <div class="product-img">
+        <span class="product-badge">New</span>
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Leow's affirmation</p>
+      <p class="product-price">$32.00 SGD</p>
+    </a>
+
+    <a href="#" class="product-card">
+      <div class="product-img">
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Barrel Pants (Birch)</p>
+      <p class="product-price">$65.00 SGD</p>
+    </a>
+
+    <a href="#" class="product-card">
+      <div class="product-img">
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Camper Cap (Sunday Haze)</p>
+      <p class="product-price">$35.00 SGD</p>
+    </a>
+
+    <a href="#" class="product-card">
+      <div class="product-img">
+        <span class="product-badge">Sale</span>
+        <div class="product-quick-add">+ Quick Add</div>
+      </div>
+      <p class="product-name">Dream Sip Bottle (Chamomile)</p>
+      <p class="product-price">
+        <span class="product-sale-price">$29.00</span>
+        <span class="product-orig-price">$39.00</span>
+        SGD
+      </p>
+    </a>
+
+  </div>
+</section>
+
+<!-- BANNER STRIP -->
+<div class="banner-strip">
+  <a href="#" class="banner-panel">
+    <div class="banner-content">
+      <p class="banner-eyebrow">Now Live</p>
+      <h3 class="banner-headline">The Summer<br>Edit 2026</h3>
+      <span class="banner-cta">Explore the Collection →</span>
+    </div>
+  </a>
+  <a href="#" class="banner-panel">
+    <div class="banner-content">
+      <p class="banner-eyebrow">Thoughtful Gifting</p>
+      <h3 class="banner-headline">Give<br>something<br><em>real.</em></h3>
+      <span class="banner-cta">Shop Curated Gifts →</span>
+    </div>
+  </a>
+</div>
+
+<!-- VALUES BAR -->
+<div class="values-bar">
+  <div class="value-item">
+    <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+    </svg>
+    <div>
+      <span class="value-label">Same-Day Dispatch</span>
+      <span class="value-desc">Orders before 12pm on weekdays</span>
+    </div>
+  </div>
+  <div class="value-item">
+    <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+    </svg>
+    <div>
+      <span class="value-label">Ships Worldwide</span>
+      <span class="value-desc">To over 50 countries</span>
+    </div>
+  </div>
+  <div class="value-item">
+    <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+    </svg>
+    <div>
+      <span class="value-label">Easy Returns</span>
+      <span class="value-desc">14-day return window</span>
+    </div>
+  </div>
+  <div class="value-item">
+    <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+    </svg>
+    <div>
+      <span class="value-label">Intentional Design</span>
+      <span class="value-desc">Functional pieces built to last</span>
+    </div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <p class="newsletter-eyebrow">Join the Community</p>
+  <h2 class="newsletter-title">Stay in the <em>loop.</em></h2>
+  <p class="newsletter-sub">Early access to new drops, exclusive members-only promotions, and a little dose of everyday inspiration.</p>
+  <div class="newsletter-form">
+    <input type="email" placeholder="Your email address">
+    <button type="button">Subscribe</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <p class="footer-brand-name">The Linen Leaf</p>
+      <p class="footer-tagline">A lifestyle brand combining function and aesthetic for thoughtful, intentional everyday living.</p>
+      <div class="footer-socials">
+        <a href="#">IG</a>
+        <a href="#">TK</a>
+        <a href="#">FB</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="#">Our Story</a></li>
+        <li><a href="#">Find a Store</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Corporate Gifting</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Returns &amp; Refunds</a></li>
+        <li><a href="#">Size Guide</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Bestsellers</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">Gift Cards</a></li>
+        <li><a href="#">Loyalty Programme</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 The Linen Leaf. All rights reserved.</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Cookie Settings</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
